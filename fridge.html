@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Home Fridge</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      bold {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+      .fridgeContainer {
+        width: 1000px;
+        height: 500px;
+        background-color: lightgray;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 20px;
+      }
+
+      .left-section {
+        display: flex;
+        align-items: flex-start;
+      }
+      .right-section {
+        margin-right: 40px;
+      }
+
+      .banner {
+        font-size: 24px;
+        font-weight: bold;
+        color: lightcoral;
+        margin-right: 20px;
+      }
+
+      .buttons {
+        display: flex;
+        align-items: center;
+      }
+
+      .adjust-button {
+        font-size: 18px;
+        padding: 10px 20px;
+        background-color: lightcoral;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin: 0 10px;
+      }
+
+      .temperature {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .info {
+        font-size: small;
+        color: black;
+      }
+
+      .list-container {
+        margin-top: 100px;
+      }
+
+      .input-box {
+        margin-top: 30px;
+        margin-right: 10px;
+      }
+
+      .list {
+        margin-top: 50px;
+      }
+
+      .delete-button {
+        margin-top: 30px;
+        margin-left: 2px;
+      }
+      .timer-container {
+        margin-top: 20px;
+      }
+
+      .timer {
+        color: black;
+        font-size: 24px;
+        margin-bottom: 10px;
+        margin-top: 40px;
+      }
+      .image-container {
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+        margin-top: 20px;
+      }
+
+      .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .play-button {
+        margin-top: 30px;
+        background-color: lightcoral;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+      .usebuttons {
+        margin-top: 30px;
+      }
+      .dark-mode {
+        background-color: black;
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="fridgeContainer">
+      <div class="left-section">
+        <div class="banner">
+          <h1>My Home Fridge</h1>
+          <div class="info" id="clock"></div>
+          <div class="info" id="weather">Sunny 78 &deg;</div>
+
+          Shopping list
+          <select class="list" id="itemList"></select>
+          <div class="list-container">
+            <input
+              type="text"
+              class="input-box"
+              id="inputItem"
+              placeholder="Enter item"
+            />
+            <button onclick="addItem()">Add</button>
+            <button class="delete-button" onclick="deleteItem()">Delete</button>
+          </div>
+          <div class="timer" id="timerDisplay">00:00</div>
+          <button onclick="startTimer()">Start</button>
+          <button onclick="stopTimer()">Stop</button>
+          <button onclick="resetTimer()">Reset</button>
+          <div><button id="toggleButton">On/Off</button></div>
+        </div>
+      </div>
+      <div class="right-section">
+        <div class="buttons">
+          Temperature --
+          <span class="temperature">38</span>
+          <button class="adjust-button" onclick="decreaseTemperature()">
+            -
+          </button>
+          <button class="adjust-button" onclick="increaseTemperature()">
+            +
+          </button>
+        </div>
+        <div class="usebuttons">
+          <button onclick="audio.play()">Home</button>
+          <button
+            onclick="changeImage('https://cdn.mos.cms.futurecdn.net/4TBgjGyyxufaKfztZy87Bk.jpg')"
+          >
+            Browser
+          </button>
+          <button
+            onclick="changeImage('https://miro.medium.com/v2/resize:fit:1400/1*ehJUoLjFHvstZs1jUPTG0Q.png')"
+          >
+            TV
+          </button>
+          <button
+            onclick="changeImage('https://images.easyagentpro.com/images-by-id?id=7271dffc1bc94bf1c41d96d5a3b05c9edeb9d3564239d9ef28158a3290d9b54bc89d8a48.jpg&w=1200')"
+          >
+            Inside Fridge
+          </button>
+        </div>
+        <div class="image-container">
+          <img
+            class="image"
+            src="https://www.lifewire.com/thmb/Ib9NmsHdQ4q236zqBVxnsNYTIHA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/samsung-ha-ref-rf56k9540sr-family-hub-overview-5aa18f0e18ba010037c023a5.jpg"
+            alt="Image 1"
+          />
+          <audio id="audio" src="big-impact-7054.mp3"></audio>
+        </div>
+        <div class="playbutton">
+          <bold>Play Music</bold>
+          <button class="play-button" onclick="playAudio()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path fill="currentColor" d="M3 22v-20l18 10-18 10z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <audio id="audio1" src="ambient-piano-logo-165357.mp3"></audio>
+
+    <script>
+      //clock
+      function updateClock() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, "0");
+        const minutes = now.getMinutes().toString().padStart(2, "0");
+        const seconds = now.getSeconds().toString().padStart(2, "0");
+        document.getElementById(
+          "clock"
+        ).textContent = `Current Time: ${hours}:${minutes}:${seconds}`;
+      }
+      setInterval(updateClock, 1000);
+
+      //tempurature
+
+      let temperature = 38;
+
+      function updateTemperatureDisplay() {
+        document.querySelector(".temperature").textContent = temperature;
+      }
+
+      function decreaseTemperature() {
+        temperature--;
+        updateTemperatureDisplay();
+      }
+
+      function increaseTemperature() {
+        temperature++;
+        updateTemperatureDisplay();
+      }
+
+      //shopping list
+
+      function addItem() {
+        const inputItem = document.getElementById("inputItem");
+        const itemList = document.getElementById("itemList");
+        const newItem = inputItem.value;
+        if (newItem) {
+          const option = document.createElement("option");
+          option.text = newItem;
+          itemList.add(option);
+          inputItem.value = "";
+        }
+      }
+
+      function deleteItem() {
+        const itemList = document.getElementById("itemList");
+        const selectedValue = itemList.value;
+        if (selectedValue) {
+          itemList.remove(itemList.selectedIndex);
+        }
+      }
+
+      //timer
+
+      let timer;
+      let timerIsRunning = false;
+      let timerDuration = 60; // Timer duration in seconds (1 minute)
+
+      function startTimer() {
+        if (!timerIsRunning) {
+          timerIsRunning = true;
+          timer = setInterval(updateTimer, 1000);
+        }
+      }
+
+      function stopTimer() {
+        clearInterval(timer);
+        timerIsRunning = false;
+      }
+
+      function resetTimer() {
+        stopTimer();
+        timerDuration = 60;
+        updateTimerDisplay();
+      }
+
+      function updateTimer() {
+        if (timerDuration > 0) {
+          timerDuration--;
+          updateTimerDisplay();
+        } else {
+          stopTimer();
+          alert("Timer finished!");
+        }
+      }
+
+      function updateTimerDisplay() {
+        const minutes = Math.floor(timerDuration / 60)
+          .toString()
+          .padStart(2, "0");
+        const seconds = (timerDuration % 60).toString().padStart(2, "0");
+        document.getElementById(
+          "timerDisplay"
+        ).textContent = `${minutes}:${seconds}`;
+      }
+
+      //screen
+
+      let imageIndex = 1;
+
+      function toggleImage() {
+        const image = document.querySelector(".image");
+        const audio = document.getElementById("audio");
+        const imageSrc = `image${imageIndex}.jpg`;
+
+        image.src = imageSrc;
+        audio.play();
+
+        imageIndex++;
+        if (imageIndex > 4) {
+          imageIndex = 1;
+        }
+      }
+
+      function changeImage(imageSrc) {
+        const image = document.querySelector(".image");
+        image.src = imageSrc;
+      }
+
+      //music button
+
+      function playAudio() {
+        const audio = document.getElementById("audio1");
+        audio.play();
+      }
+      //screen
+      const toggleButton = document.getElementById("toggleButton");
+      const fridgeContainer = document.querySelector(".fridgeContainer");
+
+      toggleButton.addEventListener("click", function () {
+        fridgeContainer.classList.toggle("dark-mode");
+      });
+    </script>
+  </body>
+</html>
