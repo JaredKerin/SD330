@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub File List</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url("background.jpg");
+        background-size: cover;
+        background-position: center;
+        color: white;
+      }
+
+      header {
+        background-color: #333;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .file-link {
+        color: white;
+        text-decoration: underline;
+      }
+
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>GitHub File List</h1>
+      <p>Page for Jared Kerin</p>
+      <img src="logo.png" alt="Your Avatar" width="150" />
+    </header>
+
+    <div class="container">
+      <div id="files"></div>
+    </div>
+
+    <footer>
+      <p>© J.Kerin | Date</p>
+    </footer>
+
+    <script>
+      function githubFilelist() {
+        var htmlString = "";
+
+        (async () => {
+          const response = await fetch(
+            "https://api.github.com/repos/jaredkerin/SD330/contents/"
+          );
+          const data = await response.json();
+
+          for (let file of data) {
+            fname = file.name;
+            fpath = "https://jaredkerin.github.io/SD330/" + fname;
+
+            htmlString += `<p><a class="file-link" href="${fpath}" target="_blank">${fname}</a></p>`;
+          }
+
+          document.getElementById("files").innerHTML = htmlString;
+        })();
+      }
+
+      githubFilelist();
+    </script>
+  </body>
+</html>
