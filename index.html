@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub File List</title>
+  </head>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        color: white;
+      }
+
+      header {
+        background-color: #333;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        background-image: url("https://images.alphacoders.com/112/112121.jpg");
+        background-position: center;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        color: black;
+      }
+
+      .file-link {
+        color: white;
+        text-decoration: underline;
+      }
+
+      footer {
+        background-color: darkblue;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      li {
+        color: black;
+      }
+    </style>
+
+  <body>
+    <header>
+      <h1>GitHub File List</h1>
+      <p>Page for Jared Kerin</p>
+      <img src="Pictureofme.JPG" alt="My picture" width="150" />
+    </header>
+
+    <div class="container">
+      <div id="files">
+        <p>Some of my files:</p>
+        <p><a href="https://github.com/JaredKerin/SD330/blob/main/Pictureofme.JPG">Pictureofme.JPG</a></p>
+        <p><a href="https://github.com/JaredKerin/SD330/blob/main/ambient-piano-logo-165357.mp3">ambient-piano-logo-165357.mp3</a></p>
+        <p><a href="https://github.com/JaredKerin/SD330/blob/main/big-impact-7054.mp3">big-impact-7054.mp3</a></p>
+        <p><a href="https://jaredkerin.github.io/SD330/">fridge.html</a></p>
+        <p><a href="https://github.com/JaredKerin/SD330/blob/main/index.html">index.html</a></p>
+      </div>
+    </div>
+    <footer>
+      <p>© J.Kerin <p id="current-date"></p></p>
+    </footer>
+
+    <script>
+    function githubFilelist(){
+				
+        var htmlString = "";
+      
+        // this creates JS object 'data' with a list of files  
+              // change "aptokash/SD330" to your github id and repository name 
+        (async () => {
+          const response = await fetch("https://api.github.com/repos/JaredKerin/SD330/contents/");
+          const data = await response.json();
+          
+        // loop through the list of files, set "file" to each file name
+            for (let file of data) {
+            
+            fname = file.name;           
+            fpath = "https://JaredKerin.github.io/SD330/" + fname;  
+            
+            htmlString += "<p>" + fname ;
+            htmlString += "<p>" + fpath ;
+          }
+            
+        document.getElementById('files').innerHTML = htmlString;
+        })()
+      
+      }
+
+    </script>
+  </body>
+</html>
