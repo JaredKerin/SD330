@@ -1,0 +1,238 @@
+{
+  "courses": [
+    {
+      "course_id": 1,
+      "course_name": "Introduction to Programming",
+      "instructor": "John Smith",
+      "credits": "4",
+      "course_number": "120",
+      "description": "Learn the basics of programming using python.",
+      "books": [
+        {
+          "book_id": 101,
+          "title": "Python Crash Course",
+          "author": "Eric Matthes",
+          "publisher": "Pearson",
+          "publication_year": 2015,
+          "isbn": "978-1593276034"
+        },
+        {
+          "book_id": 102,
+          "title": "Introduction to Python",
+          "author": "Douglas Crockford",
+          "publisher": "Wiley",
+          "publication_year": 2008,
+          "isbn": "978-0596517748"
+        }
+      ]
+    },
+    {
+      "course_id": 2,
+      "course_name": "Software Development One",
+      "instructor": "Emily Davis",
+      "credits": "4",
+      "course_number": "220",
+      "description": "Explore the essentials of the language Java",
+      "books": [
+        {
+          "book_id": 201,
+          "title": "Java: Building code",
+          "author": "Jon Duckett",
+          "publisher": "Wiley",
+          "publication_year": 2011,
+          "isbn": "978-1118008188"
+        },
+        {
+          "book_id": 202,
+          "title": "Java Syntax for Begginers",
+          "author": "David Sawyer",
+          "publisher": "O'Reilly Media",
+          "publication_year": 2014,
+          "isbn": "978-1491947074"
+        }
+      ]
+    },
+    {
+      "course_id": 3,
+      "course_name": "Software Development Two",
+      "instructor": "Sarah Johnson",
+      "credits": "4",
+      "course_number": "221",
+      "description": "Explore the essentials of web development.",
+      "books": [
+        {
+          "book_id": 203,
+          "title": "HTML and CSS: Design and Build Websites",
+          "author": "Lisa Thompson",
+          "publisher": "Wiley",
+          "publication_year": 2011,
+          "isbn": "978-0321125217"
+        },
+        {
+          "book_id": 204,
+          "title": "JavaScript and jQuery Manual",
+          "author": "Marcus Robinson",
+          "publisher": "Packt",
+          "publication_year": 2014,
+          "isbn": "978-1092837392"
+        }
+      ]
+    },
+    {
+      "course_id": 4,
+      "course_name": "Software Systems Analysis",
+      "instructor": "Michael Anderson",
+      "credits": "4",
+      "course_number": "230",
+      "description": "Explore the process of system analysis.",
+      "books": [
+        {
+          "book_id": 205,
+          "title": "Computers and Business",
+          "author": "Michelle Ramirez",
+          "publisher": "Wiley",
+          "publication_year": 2011,
+          "isbn": "978-8726409111"
+        },
+        {
+          "book_id": 206,
+          "title": "System Analysis Key Concepts",
+          "author": "Christopher Brown",
+          "publisher": "O'Reilly Media",
+          "publication_year": 2014,
+          "isbn": "978-9173344012"
+        }
+      ]
+    },
+    {
+      "course_id": 4,
+      "course_name": "Database Management",
+      "instructor": "Jasmine Patel",
+      "credits": "4",
+      "course_number": "308",
+      "description": "Explore the essentials database management and design.",
+      "books": [
+        {
+          "book_id": 301,
+          "title": "SQL: Design and Build Databases",
+          "author": "Kevin Turner",
+          "publisher": "Pearson",
+          "publication_year": 2008,
+          "isbn": "978-1234654321"
+        },
+        {
+          "book_id": 302,
+          "title": "Building Rational Databases",
+          "author": "Amanda Walker",
+          "publisher": "O'Reilly Media",
+          "publication_year": 2016,
+          "isbn": "978-1111122222"
+        }
+      ]
+    },
+    {
+      "course_id": 5,
+      "course_name": "Data Communications",
+      "instructor": "Brian Martinez",
+      "credits": "4",
+      "course_number": "306",
+      "description": "Explore the theory of networks and data communication",
+      "books": [
+        {
+          "book_id": 303,
+          "title": "Business and Data Communications",
+          "author": "Leah Rounds",
+          "publisher": "Wiley",
+          "publication_year": 2010,
+          "isbn": "978-1818181818"
+        },
+        {
+          "book_id": 304,
+          "title": "IT Networking Concepts",
+          "author": "Tom Robinson",
+          "publisher": "No Startch Press",
+          "publication_year": 2013,
+          "isbn": "978-5323110876"
+        }
+      ]
+    },
+    {
+      "course_id": 6,
+      "course_name": "Calculus One",
+      "instructor": "Olivia White",
+      "credits": "4",
+      "course_number": "241",
+      "description": "Explore the underlying concepts of calculus.",
+      "books": [
+        {
+          "book_id": 210,
+          "title": "Implicit Differentiation in Calculus",
+          "author": "Jason Garcia",
+          "publisher": "Pearson",
+          "publication_year": 2011,
+          "isbn": "978-1892266321"
+        },
+        {
+          "book_id": 211,
+          "title": "Calculus: Defining the Derivative",
+          "author": "Rachel Miller",
+          "publisher": "Apress",
+          "publication_year": 2010,
+          "isbn": "978-3535352020"
+        }
+      ]
+    },
+    {
+      "course_id": 7,
+      "course_name": "Introduction to Statistics",
+      "instructor": "Brandon Davis",
+      "credits": "3",
+      "course_number": "130",
+      "description": "Explore the math and meaning of statistics.",
+      "books": [
+        {
+          "book_id": 111,
+          "title": "Statistics Concepts",
+          "author": "Emily Hill",
+          "publisher": "Packt",
+          "publication_year": 2014,
+          "isbn": "978-0987654321"
+        },
+        {
+          "book_id": 112,
+          "title": "The Meaning of Propability",
+          "author": "Jordan Carter",
+          "publisher": "Wiley",
+          "publication_year": 2009,
+          "isbn": "978-8765432109"
+        }
+      ]
+    },
+    {
+      "course_id": 8,
+      "course_name": "System Design",
+      "instructor": "Ryan Crawford",
+      "credits": "4",
+      "course_number": "330",
+      "description": "Explore the essentials website and application design.",
+      "books": [
+        {
+          "book_id": 308,
+          "title": "Interaction Design Beyond Human Computer Interaction",
+          "author": "John Cameron",
+          "publisher": "Wiley",
+          "publication_year": 2013,
+          "isbn": "978-1231231230"
+        },
+        {
+          "book_id": 309,
+          "title": "Designing for the Future",
+          "author": "Matthew Parker",
+          "publisher": "Apress",
+          "publication_year": 2010,
+          "isbn": "978-194707469"
+        }
+      ]
+    }
+  ]
+}
