@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course List</title>
+    <link rel="stylesheet" href="foxbooks.css" />
+  </head>
+  <body>
+    <header>
+      <h1>FoxBooks</h1>
+      <p>Your Online Bookstore</p>
+      <ul class="breadcrumb">
+        <li><a href="foxbooks.html">Home</a></li>
+        <li>courses</li>
+      </ul>
+      <img
+        src="https://njmarlins.com/wp-content/uploads/sites/692/2018/10/Marist-logo-1024x496.png"
+        alt="Marist logo"
+      />
+    </header>
+    <nav>
+      <a href="foxbooks.html">Home</a>
+      <a href="books.html">Textbooks</a>
+    </nav>
+    <main>
+      <h1>Course List</h1>
+
+      <ul id="course-list"></ul>
+    </main>
+    <footer>&copy; 2023 FoxBooks. All rights reserved.</footer>
+  </body>
+  <script>
+    // Fetch the JSON data
+    fetch("foxbooks.json")
+      .then((response) => response.json())
+      .then((data) => {
+        // Generate HTML for each course
+        const courseList = document.getElementById("course-list");
+
+        data.courses.forEach((course) => {
+          const courseItem = document.createElement("li");
+          courseItem.innerHTML = `
+            <h2>${course.course_name}</h2>
+            <p><strong>Instructor:</strong> ${course.instructor}</p>
+            <p><strong>Credits:</strong> ${course.credits}</p>
+            <p><strong>Course Number:</strong> ${course.course_number}</p>
+            <p><strong>Description:</strong> ${course.description}</p>
+          `;
+
+          courseList.appendChild(courseItem);
+        });
+      })
+      .catch((error) => console.error("Error fetching JSON:", error));
+  </script>
+</html>
